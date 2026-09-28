@@ -21,7 +21,7 @@ export const person = {
 		"I prioritize pragmatic correctness, safety, and clear architecture over premature micro-optimizations. When performance truly matters, I enjoy digging into the hot paths-leveraging Linux primitives like io_uring and understanding mechanical sympathy without getting lost in optimizing for the sake of it.",
 	],
 	metadata: [
-		["location", "Wrocław, Poland"],
+		["location", "Wroclaw, Poland"],
 		["building with", "Rust & Python"],
 		[
 			"exploring",

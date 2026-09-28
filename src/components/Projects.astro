@@ -23,7 +23,7 @@ const { projects: items = projects } = Astro.props;
                     </span>
 
                     <div class="min-w-0">
-                        <h3 class="font-serif text-2xl leading-snug tracking-tighter">
+                        <h3 class="font-mono text-xl font-medium leading-snug tracking-tight">
                             <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">
                                 {project.title}
                             </span>
@@ -93,7 +93,7 @@ const { projects: items = projects } = Astro.props;
                                             notes +
                                         </span>
                                         <span class="hidden group-open/details:inline">
-                                            hide notes −
+                                            hide notes -
                                         </span>
                                     </summary>
 
@@ -111,7 +111,7 @@ const { projects: items = projects } = Astro.props;
 
                     <div class="col-start-2 mt-3 flex items-baseline gap-4 font-mono text-[0.75rem] text-faint sm:col-start-3 sm:mt-1 sm:flex-col sm:items-end sm:gap-1 sm:text-right">
                         <span class="tabular-nums">{project.year}</span>
-                        <span class="opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:opacity-60">
+                        <span class="text-faint transition-colors duration-200 group-hover:text-muted">
                             {project.status}
                         </span>
                     </div>
