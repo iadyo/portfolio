@@ -1,0 +1,122 @@
+---
+import { Icon } from "astro-icon/components";
+import { projects } from "../data/projects";
+
+type Props = {
+    projects?: typeof projects;
+};
+
+const { projects: items = projects } = Astro.props;
+---
+
+<ul class="-mt-2">
+    {items.map((project, index) => {
+        const hasDetails = Boolean(
+            project.details && project.details.length > 0,
+        );
+
+        return (
+            <li class="group border-b border-rule py-7 first:border-t">
+                <div class="grid grid-cols-[2.25rem_1fr] gap-x-4 sm:grid-cols-[3rem_1fr_auto] sm:gap-x-8">
+                    <span class="label-mono pt-1 tabular-nums text-faint">
+                        {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    <div class="min-w-0">
+                        <h3 class="font-serif text-2xl leading-snug tracking-tighter">
+                            <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                                {project.title}
+                            </span>
+                        </h3>
+
+                        <p class="mt-1.5 max-w-prose text-[0.95rem] leading-relaxed text-muted">
+                            {project.description}
+                        </p>
+
+                        <p class="mt-3 font-mono text-[0.75rem] text-faint">
+                            {project.technologies.join(" · ")}
+                        </p>
+
+                        <div class="mt-3 flex flex-wrap items-baseline gap-x-5 gap-y-2 font-mono text-[0.75rem]">
+                            {project.github && (
+                                <a
+                                    href={project.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="group/link inline-flex items-center gap-0.5 hover:text-accent transition-colors"
+                                >
+                                    <span>GitHub</span>
+                                    <Icon
+                                        aria-hidden="true"
+                                        name="lucide:arrow-up-right"
+                                        class="w-3.5 h-3.5 transition-colors duration-200 group-hover/link:text-accent"
+                                    />
+                                </a>
+                            )}
+
+                            {project.demo && (
+                                <a
+                                    href={project.demo}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="group/link inline-flex items-center gap-0.5 hover:text-accent transition-colors"
+                                >
+                                    <span>Demo</span>
+                                    <Icon
+                                        aria-hidden="true"
+                                        name="lucide:arrow-up-right"
+                                        class="w-3.5 h-3.5 transition-colors duration-200 group-hover/link:text-accent"
+                                    />
+                                </a>
+                            )}
+
+                            {project.docs && (
+                                <a
+                                    href={project.docs}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="group/link inline-flex items-center gap-0.5 hover:text-accent transition-colors"
+                                >
+                                    <span>Docs</span>
+                                    <Icon
+                                        aria-hidden="true"
+                                        name="lucide:arrow-up-right"
+                                        class="w-3.5 h-3.5 transition-colors duration-200 group-hover/link:text-accent"
+                                    />
+                                </a>
+                            )}
+
+                            {hasDetails && (
+                                <details class="group/details contents">
+                                    <summary class="list-none inline cursor-pointer text-muted hover:text-fg select-none transition-colors [&::-webkit-details-marker]:hidden">
+                                        <span class="group-open/details:hidden">
+                                            notes +
+                                        </span>
+                                        <span class="hidden group-open/details:inline">
+                                            hide notes −
+                                        </span>
+                                    </summary>
+
+                                    <ul class="basis-full mt-5 space-y-3 border-l border-rule pl-5">
+                                        {project.details!.map((d) => (
+                                            <li class="max-w-prose text-[0.9rem] leading-relaxed text-muted">
+                                                {d}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </details>
+                            )}
+                        </div>
+                    </div>
+
+                    <div class="col-start-2 mt-3 flex items-baseline gap-4 font-mono text-[0.75rem] text-faint sm:col-start-3 sm:mt-1 sm:flex-col sm:items-end sm:gap-1 sm:text-right">
+                        <span class="tabular-nums">{project.year}</span>
+                        <span class="opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:opacity-60">
+                            {project.status}
+                        </span>
+                    </div>
+                </div>
+            </li>
+        );
+    })}
+</ul>

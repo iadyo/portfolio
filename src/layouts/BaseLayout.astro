@@ -1,0 +1,51 @@
+---
+import Font from "astro/components/Font.astro";
+import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+
+type Props = {
+    title?: string;
+    description?: string;
+    article?: boolean;
+};
+
+const {
+    title = "Adrian Just",
+    description = "Adrian Just Website",
+    article = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+        <link rel="canonical" href={canonicalURL} />
+
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="author" content="Adrian Just" />
+
+        <meta property="og:type" content={article ? "article" : "website"} />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+
+        <meta name="twitter:url" content={canonicalURL} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+
+        <Font cssVariable="--font-sans" preload />
+        <Font cssVariable="--font-mono" />
+        <Font cssVariable="--font-serif" />
+    </head>
+    <body class="min-h-screen bg-bg text-fg">
+        <div class="w-full max-w-176 mx-auto px-6 sm:px-8">
+            <Nav />
+            <slot />
+        </div>
+    </body>
+</html>
