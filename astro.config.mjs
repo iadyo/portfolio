@@ -9,33 +9,42 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-    prefetch: true,
+	prefetch: true,
 
-    vite: {
-        plugins: [tailwindcss()],
-    },
-    fonts: [
-        {
-            provider: fontProviders.fontsource(),
-            name: "IBM Plex Sans",
-            cssVariable: "--font-sans",
-        },
-        {
-            provider: fontProviders.fontsource(),
-            name: "IBM Plex Mono",
-            cssVariable: "--font-mono",
-        },
-        {
-            provider: fontProviders.fontsource(),
-            name: "Newsreader",
-            cssVariable: "--font-serif",
-        },
-    ],
-    markdown: {
-        shikiConfig: {
-            theme: "github-dark",
-        },
-    },
-    site: "https://adrianjust.com",
-    integrations: [sitemap(), mdx(), icon()],
+	vite: {
+		plugins: [tailwindcss()],
+	},
+	fonts: [
+		{
+			provider: fontProviders.fontsource(),
+			name: "IBM Plex Sans",
+			cssVariable: "--font-sans",
+			weights: [400, 600],
+			styles: ["normal"],
+			subsets: ["latin"],
+		},
+		{
+			provider: fontProviders.fontsource(),
+			name: "IBM Plex Mono",
+			cssVariable: "--font-mono",
+			weights: [400],
+			styles: ["normal"],
+			subsets: ["latin"],
+		},
+		{
+			provider: fontProviders.fontsource(),
+			name: "Newsreader",
+			cssVariable: "--font-serif",
+			weights: [400],
+			styles: ["normal", "italic"],
+			subsets: ["latin"],
+		},
+	],
+	markdown: {
+		shikiConfig: {
+			theme: "github-dark",
+		},
+	},
+	site: "https://adrianjust.com",
+	integrations: [sitemap(), mdx(), icon()],
 });

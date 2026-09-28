@@ -29,6 +29,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
         <meta name="description" content={description} />
         <meta name="author" content="Adrian Just" />
 
+        <meta property="og:site_name" content="Adrian Just" />
         <meta property="og:type" content={article ? "article" : "website"} />
         <meta property="og:url" content={canonicalURL} />
         <meta property="og:title" content={title} />

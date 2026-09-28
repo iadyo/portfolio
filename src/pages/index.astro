@@ -7,6 +7,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Adrian Just">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            "mainEntity": {
+                "@type": "Person",
+                "name": "Adrian Just",
+                "url": "https://adrianjust.com/",
+                "sameAs": [
+                    "https://github.com/iadyo",
+                    "https://linkedin.com/in/adrianjust"
+                ]
+            }
+        }
+    </script>
     <main id="top">
         <section
             aria-labelledby="intro-heading"
