@@ -18,7 +18,7 @@ export const person = {
 		"computer science student aspiring to systems engineering, focused on distributed systems, networking infrastructure, and the Linux kernel boundary.",
 	paragraphs: [
 		"I spend most of my time writing Rust, pairing it with Python for quick prototyping and scientific workloads. My main focus leans toward distributed systems and network infrastructure: proxies, custom protocols, asynchronous runtimes, and the plumbing that lets machines talk to each other reliably at scale.",
-		"I prioritize pragmatic correctness, safety, and clear architecture over premature micro-optimizations. When performance truly matters, I enjoy digging into the hot paths—leveraging Linux primitives like io_uring and understanding mechanical sympathy without getting lost in optimizing for the sake of it.",
+		"I prioritize pragmatic correctness, safety, and clear architecture over premature micro-optimizations. When performance truly matters, I enjoy digging into the hot paths-leveraging Linux primitives like io_uring and understanding mechanical sympathy without getting lost in optimizing for the sake of it.",
 	],
 	metadata: [
 		["location", "Wrocław, Poland"],
