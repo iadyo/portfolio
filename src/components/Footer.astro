@@ -1,0 +1,39 @@
+---
+import { Icon } from "astro-icon/components";
+import { person } from "../data/content";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="rule-top mt-16 sm:mt-24 py-10 font-mono text-xs text-faint">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-2">
+            <span class="inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+            <span>
+                &copy; {currentYear} {person.name}
+            </span>
+        </div>
+
+        <div class="flex items-center gap-5 text-muted">
+            <a
+                href="#top"
+                class="group inline-flex items-center gap-1 transition-colors hover:text-fg"
+            >
+                <Icon
+                    name="lucide:arrow-up"
+                    class="h-3 w-3 transition-transform duration-200 group-hover:-translate-y-0.5"
+                    aria-hidden="true"
+                />
+                <span>top</span>
+            </a>
+            <a
+                href="https://github.com/iadyo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="transition-colors hover:text-fg"
+            >
+                github
+            </a>
+        </div>
+    </div>
+</footer>
