@@ -15,17 +15,17 @@ export type Person = {
 export const person = {
 	name: "Adrian Just",
 	intro:
-		"software engineer interested in systems, programming languages, infrastructure, performance, and the boundary between software and hardware.",
+		"computer science student aspiring to systems engineering, focused on distributed systems, networking infrastructure, and the Linux kernel boundary.",
 	paragraphs: [
-		"I write mostly Rust and C these days, usually somewhere below the framework layer: schedulers, storage engines, network paths, the parts of a program that only get interesting once you look at what the machine is actually doing.",
-		"Lately I've been reading kernel source for fun, measuring things I assumed I understood, and slowly convincing myself that most performance work is really a question about memory. I keep notes here because writing is how I find out whether I understood something.",
+		"I spend most of my time writing Rust, pairing it with Python for quick prototyping and scientific workloads. My main focus leans toward distributed systems and network infrastructure: proxies, custom protocols, asynchronous runtimes, and the plumbing that lets machines talk to each other reliably at scale.",
+		"I prioritize pragmatic correctness, safety, and clear architecture over premature micro-optimizations. When performance truly matters, I enjoy digging into the hot paths—leveraging Linux primitives like io_uring and understanding mechanical sympathy without getting lost in optimizing for the sake of it.",
 	],
 	metadata: [
-		["location", "Wroclaw, Poland"],
+		["location", "Wrocław, Poland"],
 		["building with", "Rust & Python"],
 		[
 			"exploring",
-			"systems programming, distributed systems, low-level software",
+			"distributed systems, network infrastructure, Linux internals, async runtimes",
 		],
 	],
 	links: [
@@ -48,11 +48,10 @@ export const person = {
 } satisfies Person;
 
 export const interests = [
-	"Systems",
-	"Rust",
-	"Operating systems",
-	"Networking",
 	"Distributed systems",
-	"Performance",
-	"Hardware / software boundaries",
+	"Network infrastructure & protocols",
+	"Systems programming in Rust",
+	"Linux internals & OS primitives",
+	"Asynchronous runtimes",
+	"Pragmatic performance engineering",
 ];
