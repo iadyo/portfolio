@@ -1,0 +1,78 @@
+diff --git a/src/components/Nav.astro b/src/components/Nav.astro
+index a22f358..67d51a9 100644
+--- a/src/components/Nav.astro
++++ b/src/components/Nav.astro
+@@ -16,7 +16,7 @@ import { person } from "../data/content";
+                 <a href="/">Home</a>
+             </li>
+             <li>
+-                <a href="#projects">Projects</a>
++                <a href="/#projects">Projects</a>
+             </li>
+             <li>
+                 <a href="/notes">Notes</a>
+diff --git a/src/layouts/BaseLayout.astro b/src/layouts/BaseLayout.astro
+index 151a1b5..39626a9 100644
+--- a/src/layouts/BaseLayout.astro
++++ b/src/layouts/BaseLayout.astro
+@@ -29,7 +29,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+         <meta name="description" content={description} />
+         <meta name="author" content="Adrian Just" />
+ 
+-        <meta property="og:site_name" content={title} />
++        <meta property="og:site_name" content="Adrian Just" />
+         <meta property="og:type" content={article ? "article" : "website"} />
+         <meta property="og:url" content={canonicalURL} />
+         <meta property="og:title" content={title} />
+diff --git a/src/pages/index.astro b/src/pages/index.astro
+index 72a9ff1..1ab1a6c 100644
+--- a/src/pages/index.astro
++++ b/src/pages/index.astro
+@@ -17,7 +17,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
+                 "url": "https://adrianjust.com/",
+                 "sameAs": [
+                     "https://github.com/iadyo",
+-                    "https://linkedin.com/in/adrianjust"
++                    "https://www.linkedin.com/in/adrian-just"
+                 ]
+             }
+         }
+@@ -45,7 +45,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
+                         >
+                             <Icon
+                                 name={icon}
+-                                class="w-6 h-6 hover:text-white transition-colors"
++                                class="w-6 h-6 transition-colors"
+                             />
+                         </a>
+                     ))}
+@@ -62,7 +62,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
+                 ))}
+             </div>
+ 
+-            <dl class="mt-10 space-y-1.5 font-mono text-base text-[0.75rem]">
++            <dl class="mt-10 space-y-1.5 font-mono text-[0.75rem]">
+                 {person.metadata.map(([k, v]) => (
+                     <div class="flex flex-col gap-x-4 sm:flex-row">
+                         <dt class="text-faint sm:w-36 sm:shrink-0">{k}</dt>
+diff --git a/src/styles/global.css b/src/styles/global.css
+index 8dc0df2..a83c693 100644
+--- a/src/styles/global.css
++++ b/src/styles/global.css
+@@ -1,4 +1,5 @@
+ @import "tailwindcss";
++@plugin "@tailwindcss/typography";
+ 
+ @theme inline {
+ 	--font-sans: var(--font-sans);
+diff --git a/wrangler.jsonc b/wrangler.jsonc
+index d105f99..0325e7c 100644
+--- a/wrangler.jsonc
++++ b/wrangler.jsonc
+@@ -3,5 +3,6 @@
+   "compatibility_date": "2026-09-28",
+   "assets": {
+     "directory": "./dist",
++    "not_found_handling": "404-page",
+   },
+ }

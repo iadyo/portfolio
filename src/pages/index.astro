@@ -17,7 +17,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 "url": "https://adrianjust.com/",
                 "sameAs": [
                     "https://github.com/iadyo",
-                    "https://linkedin.com/in/adrianjust"
+                    "https://www.linkedin.com/in/adrian-just"
                 ]
             }
         }
@@ -45,7 +45,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                         >
                             <Icon
                                 name={icon}
-                                class="w-6 h-6 hover:text-white transition-colors"
+                                class="w-6 h-6 transition-colors"
                             />
                         </a>
                     ))}
@@ -62,7 +62,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 ))}
             </div>
 
-            <dl class="mt-10 space-y-1.5 font-mono text-base text-[0.75rem]">
+            <dl class="mt-10 space-y-1.5 font-mono text-[0.75rem]">
                 {person.metadata.map(([k, v]) => (
                     <div class="flex flex-col gap-x-4 sm:flex-row">
                         <dt class="text-faint sm:w-36 sm:shrink-0">{k}</dt>
