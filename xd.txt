@@ -1,78 +1,185 @@
+diff --git a/README.md b/README.md
+deleted file mode 100644
+index 817dd80..0000000
+--- a/README.md
++++ /dev/null
+@@ -1,43 +0,0 @@
+-# Astro Starter Kit: Minimal
+-
+-```sh
+-pnpm create astro@latest -- --template minimal
+-```
+-
+-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+-
+-## 🚀 Project Structure
+-
+-Inside of your Astro project, you'll see the following folders and files:
+-
+-```text
+-/
+-├── public/
+-├── src/
+-│   └── pages/
+-│       └── index.astro
+-└── package.json
+-```
+-
+-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+-
+-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+-
+-Any static assets, like images, can be placed in the `public/` directory.
+-
+-## 🧞 Commands
+-
+-All commands are run from the root of the project, from a terminal:
+-
+-| Command                   | Action                                           |
+-| :------------------------ | :----------------------------------------------- |
+-| `pnpm install`             | Installs dependencies                            |
+-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
+-| `pnpm build`           | Build your production site to `./dist/`          |
+-| `pnpm preview`         | Preview your build locally, before deploying     |
+-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
+-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+-
+-## 👀 Want to learn more?
+-
+-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 diff --git a/src/components/Nav.astro b/src/components/Nav.astro
-index a22f358..67d51a9 100644
+index 67d51a9..b812f47 100644
 --- a/src/components/Nav.astro
 +++ b/src/components/Nav.astro
-@@ -16,7 +16,7 @@ import { person } from "../data/content";
-                 <a href="/">Home</a>
+@@ -13,13 +13,28 @@ import { person } from "../data/content";
+ 
+         <ul class="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm text-muted">
+             <li>
+-                <a href="/">Home</a>
++                <a
++                    href="/"
++                    class="hover:text-accent duration-300 transition-colors"
++                >
++                    Home
++                </a>
              </li>
              <li>
--                <a href="#projects">Projects</a>
-+                <a href="/#projects">Projects</a>
+-                <a href="/#projects">Projects</a>
++                <a
++                    href="/#projects"
++                    class="hover:text-accent duration-300 transition-colors"
++                >
++                    Projects
++                </a>
              </li>
              <li>
-                 <a href="/notes">Notes</a>
-diff --git a/src/layouts/BaseLayout.astro b/src/layouts/BaseLayout.astro
-index 151a1b5..39626a9 100644
---- a/src/layouts/BaseLayout.astro
-+++ b/src/layouts/BaseLayout.astro
-@@ -29,7 +29,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
-         <meta name="description" content={description} />
-         <meta name="author" content="Adrian Just" />
+-                <a href="/notes">Notes</a>
++                <a
++                    href="/notes"
++                    class="hover:text-accent duration-300 transition-colors"
++                >
++                    Notes
++                </a>
+             </li>
+         </ul>
+     </nav>
+diff --git a/src/components/Section.astro b/src/components/Section.astro
+index 980f0a0..9ba8bdd 100644
+--- a/src/components/Section.astro
++++ b/src/components/Section.astro
+@@ -7,11 +7,7 @@ type Props = {
+ const { id, label } = Astro.props;
+ ---
  
--        <meta property="og:site_name" content={title} />
-+        <meta property="og:site_name" content="Adrian Just" />
-         <meta property="og:type" content={article ? "article" : "website"} />
-         <meta property="og:url" content={canonicalURL} />
-         <meta property="og:title" content={title} />
-diff --git a/src/pages/index.astro b/src/pages/index.astro
-index 72a9ff1..1ab1a6c 100644
---- a/src/pages/index.astro
-+++ b/src/pages/index.astro
-@@ -17,7 +17,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
-                 "url": "https://adrianjust.com/",
-                 "sameAs": [
-                     "https://github.com/iadyo",
--                    "https://linkedin.com/in/adrianjust"
-+                    "https://www.linkedin.com/in/adrian-just"
-                 ]
-             }
-         }
-@@ -45,7 +45,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
-                         >
-                             <Icon
-                                 name={icon}
--                                class="w-6 h-6 hover:text-white transition-colors"
-+                                class="w-6 h-6 transition-colors"
-                             />
-                         </a>
-                     ))}
-@@ -62,7 +62,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
-                 ))}
-             </div>
- 
--            <dl class="mt-10 space-y-1.5 font-mono text-base text-[0.75rem]">
-+            <dl class="mt-10 space-y-1.5 font-mono text-[0.75rem]">
-                 {person.metadata.map(([k, v]) => (
-                     <div class="flex flex-col gap-x-4 sm:flex-row">
-                         <dt class="text-faint sm:w-36 sm:shrink-0">{k}</dt>
-diff --git a/src/styles/global.css b/src/styles/global.css
-index 8dc0df2..a83c693 100644
---- a/src/styles/global.css
-+++ b/src/styles/global.css
-@@ -1,4 +1,5 @@
- @import "tailwindcss";
-+@plugin "@tailwindcss/typography";
- 
- @theme inline {
- 	--font-sans: var(--font-sans);
-diff --git a/wrangler.jsonc b/wrangler.jsonc
-index d105f99..0325e7c 100644
---- a/wrangler.jsonc
-+++ b/wrangler.jsonc
-@@ -3,5 +3,6 @@
-   "compatibility_date": "2026-09-28",
-   "assets": {
-     "directory": "./dist",
-+    "not_found_handling": "404-page",
-   },
- }
+-<section
+-    id={id}
+-    aria-labelledby={`${id}-heading`}
+-    class="rule-top py-14 sm:py-16"
+->
++<section id={id} aria-labelledby={`${id}-heading`} class="py-14 sm:py-16">
+     <h2
+         id={`${id}-heading`}
+         class="font-mono uppercase text-faint text-[0.6875rem] tracking-wider mb-8"
+diff --git a/xd.txt b/xd.txt
+index abbbf4c..e69de29 100644
+--- a/xd.txt
++++ b/xd.txt
+@@ -1,78 +0,0 @@
+-diff --git a/src/components/Nav.astro b/src/components/Nav.astro
+-index a22f358..67d51a9 100644
+---- a/src/components/Nav.astro
+-+++ b/src/components/Nav.astro
+-@@ -16,7 +16,7 @@ import { person } from "../data/content";
+-                 <a href="/">Home</a>
+-             </li>
+-             <li>
+--                <a href="#projects">Projects</a>
+-+                <a href="/#projects">Projects</a>
+-             </li>
+-             <li>
+-                 <a href="/notes">Notes</a>
+-diff --git a/src/layouts/BaseLayout.astro b/src/layouts/BaseLayout.astro
+-index 151a1b5..39626a9 100644
+---- a/src/layouts/BaseLayout.astro
+-+++ b/src/layouts/BaseLayout.astro
+-@@ -29,7 +29,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+-         <meta name="description" content={description} />
+-         <meta name="author" content="Adrian Just" />
+- 
+--        <meta property="og:site_name" content={title} />
+-+        <meta property="og:site_name" content="Adrian Just" />
+-         <meta property="og:type" content={article ? "article" : "website"} />
+-         <meta property="og:url" content={canonicalURL} />
+-         <meta property="og:title" content={title} />
+-diff --git a/src/pages/index.astro b/src/pages/index.astro
+-index 72a9ff1..1ab1a6c 100644
+---- a/src/pages/index.astro
+-+++ b/src/pages/index.astro
+-@@ -17,7 +17,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
+-                 "url": "https://adrianjust.com/",
+-                 "sameAs": [
+-                     "https://github.com/iadyo",
+--                    "https://linkedin.com/in/adrianjust"
+-+                    "https://www.linkedin.com/in/adrian-just"
+-                 ]
+-             }
+-         }
+-@@ -45,7 +45,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
+-                         >
+-                             <Icon
+-                                 name={icon}
+--                                class="w-6 h-6 hover:text-white transition-colors"
+-+                                class="w-6 h-6 transition-colors"
+-                             />
+-                         </a>
+-                     ))}
+-@@ -62,7 +62,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
+-                 ))}
+-             </div>
+- 
+--            <dl class="mt-10 space-y-1.5 font-mono text-base text-[0.75rem]">
+-+            <dl class="mt-10 space-y-1.5 font-mono text-[0.75rem]">
+-                 {person.metadata.map(([k, v]) => (
+-                     <div class="flex flex-col gap-x-4 sm:flex-row">
+-                         <dt class="text-faint sm:w-36 sm:shrink-0">{k}</dt>
+-diff --git a/src/styles/global.css b/src/styles/global.css
+-index 8dc0df2..a83c693 100644
+---- a/src/styles/global.css
+-+++ b/src/styles/global.css
+-@@ -1,4 +1,5 @@
+- @import "tailwindcss";
+-+@plugin "@tailwindcss/typography";
+- 
+- @theme inline {
+- 	--font-sans: var(--font-sans);
+-diff --git a/wrangler.jsonc b/wrangler.jsonc
+-index d105f99..0325e7c 100644
+---- a/wrangler.jsonc
+-+++ b/wrangler.jsonc
+-@@ -3,5 +3,6 @@
+-   "compatibility_date": "2026-09-28",
+-   "assets": {
+-     "directory": "./dist",
+-+    "not_found_handling": "404-page",
+-   },
+- }
